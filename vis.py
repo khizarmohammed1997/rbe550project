@@ -21,7 +21,7 @@ def visualize_traj_dynamic(ws_model, X, U, goal, time = None, name=None):
         srec = matplotlib.patches.Rectangle(
                 (hole[0]-hole[2], hole[1]-hole[2]),
                 2*hole[2], 2*hole[2],
-                facecolor= 'red',
+                facecolor= 'black',
                 fill = True,
                 alpha=1)
         ax.add_patch(srec)
@@ -54,7 +54,8 @@ def visualize_traj_dynamic(ws_model, X, U, goal, time = None, name=None):
     ax.grid(True)
     if name:
         pyplot.savefig(name, dpi = 200)
-        #pyplot.savefig(name,bbox_inches='tight')
+        pyplot.savefig(name,bbox_inches='tight')
+    # pyplot.show()
     pyplot.cla()
     pyplot.close(figure)
     return figure

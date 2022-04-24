@@ -1,0 +1,44 @@
+# import cv2
+# import numpy as np
+# import glob
+ 
+# img_array = []
+# filenames = sorted(glob.glob('C:/Users/khiza/OneDrive/Documents/GitHub/-Reciprocal-Velocity-Obstacle--RVO-/data/*.png'))
+# for filename in filenames:
+#     img = cv2.imread(filename)
+#     height, width, layers = img.shape
+#     size = (width,height)
+#     img_array.append(img)
+ 
+# out = cv2.VideoWriter('project.avi',cv2.VideoWriter_fourcc(*'mp4v'),50, size)
+# #out = cv2.VideoWriter('project.avi',0,15, size)
+
+# for i in range(len(img_array)):
+#     # print(filenames[i])
+#     out.write(img_array[i])
+#     # cv2.imshow('', img_array[i])
+#     # cv2.waitKey(0)
+# # cv2.destroyAllWindows()
+# out.release()
+
+
+
+
+import cv2
+import numpy as np
+import glob
+ 
+img_array = []
+size = (0,0)
+for filename in glob.glob("C:/Users/khiza/OneDrive/Documents/GitHub/-Reciprocal-Velocity-Obstacle--RVO-/data/*.png"):
+    img = cv2.imread(filename)
+    height, width, layers = img.shape
+    size = (width,height)
+    img_array.append(img)
+print(len(img_array))
+print(size) 
+out = cv2.VideoWriter('project.mp4',cv2.VideoWriter_fourcc('m', 'p', '4', 'v'), 15, size)
+ 
+for i in range(len(img_array)):
+    out.write(img_array[i])
+out.release()

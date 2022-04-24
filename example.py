@@ -3,32 +3,58 @@ import sys
 
 from RVO import RVO_update, reach, compute_V_des, reach
 from vis import visualize_traj_dynamic
-
+from map_creator import straight_line_creator,obstacles_adder
 
 #------------------------------
 #define workspace model
 ws_model = dict()
 #robot radius
-ws_model['robot_radius'] = 0.2
+ws_model['robot_radius'] = 0.075
 #circular obstacles, format [x,y,rad]
 # no obstacles
-ws_model['circular_obstacles'] = []
+#ws_model['circular_obstacles'] = []
 # with obstacles
 # ws_model['circular_obstacles'] = [[-0.3, 2.5, 0.3], [1.5, 2.5, 0.3], [3.3, 2.5, 0.3], [5.1, 2.5, 0.3]]
-#rectangular boundary, format [x,y,width/2,heigth/2]
-ws_model['boundary'] = [] 
+# ws_model['circular_obstacles'] = [[-0.3, 2, 0.3],[-0.3, 2.5, 0.3],[-0.3, 1.5, 0.3],[-0.3, 3, 0.3],[-0.3, 1, 0.3],[-0.3, 1.75, 0.3]]
 
+
+lines=[[[-1,-1],[-1,6.75]],    [[1.75,6.75],[1.75,4.75]],   [[1.75,4.75],[5,4.75]], [[5,4.75],[7,4.75]],\
+    [[-0.5,-1],[6,-1]],\
+    [[1.75,2.75],[1.75,-1]],  [[1.75,2.75],[3.75,2.75]],  [[5,2.75],[7,2.75]]]
+
+ws_model['circular_obstacles']=obstacles_adder(lines,0.1)
+
+# rectangular boundary, format [x,y,width/2,heigth/2]
+ws_model['boundary'] = [[3,3,10]] 
 #------------------------------
 #initialization for robot 
 # position of [x,y]
-X = [[-0.5+1.0*i, 0.0] for i in range(7)] + [[-0.5+1.0*i, 5.0] for i in range(7)]
+# X = [[-0.5+1.0*i, 0.0] for i in range(7)] + [[-0.5+1.0*i, 5.0] for i in range(7)]
+X=[[0,3],[5,3]]
 # velocity of [vx,vy]
 V = [[0,0] for i in range(len(X))]
 # maximal velocity norm
 V_max = [1.0 for i in range(len(X))]
+#print("printing v_max",V_max)
 # goal of [x,y]
-goal = [[5.5-1.0*i, 5.0] for i in range(7)] + [[5.5-1.0*i, 0.0] for i in range(7)]
+# goal = [[5.5-1.0*i, 5.0] for i in range(7)] + [[5.5-1.0*i, 0.0] for i in range(7)]
+goal=[[5,3],[0,3]]
 
+# print(type(X),X)
+# print(type(V),V)
+# print(type(V_max),V_max)
+# print(type(goal),goal)
+#------------------------------
+# # Hospital workspace model
+# ws_model = dict()
+# ws_model['robot_radius'] = 0.1
+# ws_model['circular_obstacles'] = [[-0.3, 2, 0.3],[-0.3, 2.5, 0.3],[-0.3, 1.5, 0.3],[-0.3, 3, 0.3],[-0.3, 1, 0.3],[-0.3, 1.75, 0.3]]
+
+# # Robot initialization
+# X = [[0.5,0.5]]
+# V = [[0,0] for i in range(len(X))]
+# V_max = [1.0 for i in range(len(X))]
+# goal=[[1,1]]
 #------------------------------
 #simulation setup
 # total simulation time (s)
@@ -51,7 +77,9 @@ while t*step < total_time:
     #----------------------------------------
     # visualization
     if t%10 == 0:
+        # print("change")
         visualize_traj_dynamic(ws_model, X, V, goal, time=t*step, name='data/snap%s.png'%str(t/10))
+        # print("change")
         #visualize_traj_dynamic(ws_model, X, V, goal, time=t*step, name='data/snap%s.png'%str(t/10))
     t += 1
     

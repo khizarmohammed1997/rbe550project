@@ -28,7 +28,7 @@ def RVO_update(X, V_des, V_current, ws_model):
                 # use RVO
                 transl_vB_vA = [pA[0]+0.5*(vB[0]+vA[0]), pA[1]+0.5*(vB[1]+vA[1])]
                 # use VO
-                #transl_vB_vA = [pA[0]+vB[0], pA[1]+vB[1]]
+                # transl_vB_vA = [pA[0]+vB[0], pA[1]+vB[1]]
                 dist_BA = distance(pA, pB)
                 theta_BA = atan2(pB[1]-pA[1], pB[0]-pA[0])
                 if 2*ROB_RAD > dist_BA:
