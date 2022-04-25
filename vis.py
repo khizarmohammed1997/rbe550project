@@ -13,7 +13,7 @@ from math import atan2, sin, cos, sqrt
 
 
 
-def visualize_traj_dynamic(ws_model, X, U, goal, time = None, name=None):
+def visualize_traj_dynamic(ws_model, X, X_list, U, goal, time = None, name=None):
     figure = pyplot.figure()
     ax = figure.add_subplot(1,1,1)
     cmap = get_cmap(len(X))
@@ -57,7 +57,12 @@ def visualize_traj_dynamic(ws_model, X, U, goal, time = None, name=None):
         ax.plot([goal[i][0]], [goal[i][1]], 'x', color=cmap(i), markersize =15,linewidth=3.0)
     if time:
         ax.text(2,5.5,'$t=%.1f s$' %time,
-                fontsize=20, fontweight ='bold')                
+                fontsize=20, fontweight ='bold')  
+
+    # plotting the trajectory of all posiitions (path) traced by the robots
+    ax.plot(X_list[0,0,:],X_list[0,1,:],'r--')
+    ax.plot(X_list[1,0,:],X_list[1,1,:],'b--')
+
     # ---set axes ---
     ax.set_aspect('equal')
     ax.set_xlim(0, 10)
