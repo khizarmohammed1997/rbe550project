@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import numpy as np
-from types import DynamicClassAttribute
+# from types import DynamicClassAttribute
 import matplotlib
 import matplotlib.pyplot as pyplot
 from matplotlib.path import Path

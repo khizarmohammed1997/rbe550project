@@ -48,7 +48,7 @@ step = 0.01
 #simulation starts
 t = 0
 
-
+X_list = np.array(X)
 start_step=0 #step for dynamic obstacles
 while t*step < total_time:
     
@@ -66,7 +66,7 @@ while t*step < total_time:
     # Removing old dynamic obstacles
     ws_model['circular_obstacles']=removing_old_dynamic_obs(ws_model['circular_obstacles'],static_obs_length)
 
-    X_list = np.array(X)
+
     # updating robot positions
     for i in range(len(X)):
         X[i][0] += V[i][0]*step
@@ -78,6 +78,7 @@ while t*step < total_time:
     if t%10 == 0:
         # saving the list of all the positions of both the robots from the beginning to the current iterations
         X_list = np.dstack((X_list,np.array(X)))
+
         # print("change")
         visualize_traj_dynamic(ws_model, X, X_list, V, goal, time=t*step, name='data/snap%s.jpg'%str(t/10))
         # print("change")
