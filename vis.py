@@ -70,7 +70,7 @@ def visualize_traj_dynamic(ws_model, X, X_list, U, goal, time = None, name=None)
     ax.set_ylim(0, 10)
     ax.set_xlabel(r'$x (m)$')
     ax.set_ylabel(r'$y (m)$')
-    ax.grid(True)
+    ax.grid(False)
     if name:
         pyplot.savefig(name, dpi = 200)
         pyplot.savefig(name,bbox_inches='tight')
