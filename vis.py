@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from types import DynamicClassAttribute
 import matplotlib
 import matplotlib.pyplot as pyplot
 from matplotlib.path import Path
@@ -25,6 +26,18 @@ def visualize_traj_dynamic(ws_model, X, U, goal, time = None, name=None):
                 fill = True,
                 alpha=1)
         ax.add_patch(srec)
+
+    #plot dynamic obstacles
+    for hole in ws_model['dynamic_plotting']:
+        arec = matplotlib.patches.Rectangle(
+                (hole[0]-hole[2], hole[1]-hole[2]),
+                2*hole[2], 2*hole[2],
+                facecolor= 'black',
+                fill = True,
+                alpha=1)
+        ax.add_patch(arec)
+
+
     # ---plot traj---
     for i in range(0,len(X)):
         #-------plot car
@@ -41,14 +54,19 @@ def visualize_traj_dynamic(ws_model, X, U, goal, time = None, name=None):
         #----------plot velocity
         ax.arrow(X[i][0], X[i][1], U[i][0], U[i][1], head_width=0.05, head_length=0.1, fc=cmap(i), ec=cmap(i))
         ax.text(X[i][0]-0.1, X[i][1]-0.1, r'$%s$' %i, fontsize=15, fontweight = 'bold',zorder=3)
-        ax.plot([goal[i][0]], [goal[i][1]], '*', color=cmap(i), markersize =15,linewidth=3.0)
+        ax.plot([goal[i][0]], [goal[i][1]], 'x', color=cmap(i), markersize =15,linewidth=3.0)
     if time:
         ax.text(2,5.5,'$t=%.1f s$' %time,
                 fontsize=20, fontweight ='bold')                
     # ---set axes ---
     ax.set_aspect('equal')
+<<<<<<< Updated upstream
     ax.set_xlim(0.0, 20.0)
     ax.set_ylim(0.0, 20.0)
+=======
+    ax.set_xlim(0, 10)
+    ax.set_ylim(0, 10)
+>>>>>>> Stashed changes
     ax.set_xlabel(r'$x (m)$')
     ax.set_ylabel(r'$y (m)$')
     ax.grid(True)
