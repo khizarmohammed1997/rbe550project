@@ -66,8 +66,8 @@ def visualize_traj_dynamic(ws_model, X, X_list, U, goal, time = None, name=None)
 
     # ---set axes ---
     ax.set_aspect('equal')
-    ax.set_xlim(0, 10)
-    ax.set_ylim(0, 10)
+    ax.set_xlim(0, 20)
+    ax.set_ylim(0, 20)
     ax.set_xlabel(r'$x (m)$')
     ax.set_ylabel(r'$y (m)$')
     ax.grid(False)
