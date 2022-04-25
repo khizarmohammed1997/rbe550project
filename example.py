@@ -14,9 +14,9 @@ ws_model = dict()
 #robot radius
 ws_model['robot_radius'] = 0.075
 
-lines=[[[5,7],[5,3]]]
+lines=[[[0,0],[0,20]],[[0,20],[20,20]],[[20,20],[20,0]],[[0,0],[20,0]],[[5,0],[5,10]],[[5,10],[15,10]]]
 #obstacles format [x,y,thickness/2]
-ws_model['circular_obstacles']=[]
+ws_model['circular_obstacles']=obstacles_adder(lines,0.2)
 
 #dynamic obstacels format Inputs: [ [startx,starty], mode(right,down,left,up), speed,  thickness  ]
 ws_model['dynamic_obs']=[ [[8,4],3,2.5,0.25]]
@@ -25,7 +25,7 @@ ws_model['dynamic_obs']=[ [[8,4],3,2.5,0.25]]
 #initialization for robot 
 # position of [x,y]
 # X = [[-0.5+1.0*i, 0.0] for i in range(7)] + [[-0.5+1.0*i, 5.0] for i in range(7)]
-X=[[2,4],[2,7]]
+X = [[2.5,2.5],[18,18]]
 # velocity of [vx,vy]
 V = [[0,0] for i in range(len(X))]
 # maximal velocity norm
@@ -33,7 +33,7 @@ V_max = [2.5 for i in range(len(X))]
 #print("printing v_max",V_max)
 # goal of [x,y]
 # goal = [[5.5-1.0*i, 5.0] for i in range(7)] + [[5.5-1.0*i, 0.0] for i in range(7)]
-goal=[[8,4],[2,7]]
+goal = [[15,2.5],[7.5,2.5]]
 
 
 
