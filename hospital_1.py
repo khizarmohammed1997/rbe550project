@@ -7,21 +7,7 @@ from cv2 import circle
 from RVO import RVO_update, reach, compute_V_des, reach
 from vis import visualize_traj_dynamic
 from map_creator import obstacles_adder,removing_old_dynamic_obs,update_dynamic_obs
-
-#------------------------------
-#define workspace model
-# ws_model = dict()
-# #robot radius
-# ws_model['robot_radius'] = 0.075
-
-# lines=[[[0,0],[0,20]],[[0,20],[20,20]],[[20,20],[20,0]],[[0,0],[20,0]],[[5,0],[5,10]],[[5,10],[15,10]]]
-# #obstacles format [x,y,thickness/2]
-# ws_model['circular_obstacles']=obstacles_adder(lines,0.2)
-
-# #dynamic obstacels format Inputs: [ [startx,starty], mode(right,down,left,up), speed,  thickness  ]
-# ws_model['dynamic_obs']=[ [[8,4],3,2.5,0.25]]
-
-
+from map_generator import global_path_generator
 #--------------------------------------------------------
 #Hospital map 1
 lines_borders=[  [[0,0],[0,20]], [[0,20],[20,20]],  [[20,20],[20,0]],  [[0,0],[20,0]] ]
@@ -33,23 +19,25 @@ ws_model = dict()
 ws_model['robot_radius'] = 0.25
 ws_model['circular_obstacles']=obstacles_adder(all_lines,0.5)
 ws_model['dynamic_obs']=[ [[8,4],3,2.5,0.25]]
+ws_model['circular_obstacles'],ws_model['dynamic_obs'],ws_model['dynamic_plotting']=update_dynamic_obs(ws_model['circular_obstacles'],ws_model['dynamic_obs'],0)
 
 
 #------------------------------
 #initialization for robot 
-# position of [x,y]
-# X = [[-0.5+1.0*i, 0.0] for i in range(7)] + [[-0.5+1.0*i, 5.0] for i in range(7)]
+
 X = [[3,3],[18,18]]
 # velocity of [vx,vy]
 V = [[0,0] for i in range(len(X))]
 # maximal velocity norm
 V_max = [2.5 for i in range(len(X))]
-#print("printing v_max",V_max)
-# goal of [x,y]
-# goal = [[5.5-1.0*i, 5.0] for i in range(7)] + [[5.5-1.0*i, 0.0] for i in range(7)]
 goal = [[15,2.5],[7.5,2.5]]
 
+start=(40,20)
+goal=(50,200)
+path,scale_x,scale_y=global_path_generator(ws_model,0.5,start,goal)
+print(path)
 
+exit
 
 #------------------------------
 #simulation setup
@@ -98,4 +86,3 @@ while t*step < total_time:
         # print("change")
         #visualize_traj_dynamic(ws_model, X, V, goal, time=t*step, name='data/snap%s.png'%str(t/10))
     t += 1
-    

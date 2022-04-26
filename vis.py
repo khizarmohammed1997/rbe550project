@@ -72,11 +72,11 @@ def visualize_traj_dynamic(ws_model, X, X_list, U, goal, time = None, name=None)
     ax.set_ylabel(r'$y (m)$')
     ax.grid(False)
     if name:
-        pyplot.savefig(name, dpi = 200)
-        pyplot.savefig(name,bbox_inches='tight')
-        # pyplot.show()
-    pyplot.cla()
-    pyplot.close(figure)
+        # pyplot.savefig(name, dpi = 200)
+        # pyplot.savefig(name,bbox_inches='tight')
+        pyplot.show()
+    # pyplot.cla()
+    # pyplot.close(figure)
     return figure
 
 def get_cmap(N):
