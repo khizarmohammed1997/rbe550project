@@ -52,6 +52,18 @@ def visualize_traj_dynamic(ws_model, X, X_list, U, goal, time = None, name=None)
             alpha=1,
             zorder=2)
         ax.add_patch(robot)
+        
+        circle = matplotlib.patches.Circle(
+            (X[i][0],X[i][1]),
+            radius = 10*ws_model['robot_radius'],
+            facecolor='green',
+            edgecolor='black',
+            linewidth=1.0,
+            fill = False,
+            ls='--',
+            alpha=1,
+            zorder=2)
+        ax.add_patch(circle)
         #----------plot velocity
         ax.arrow(X[i][0], X[i][1], U[i][0], U[i][1], head_width=0.05, head_length=0.1, fc=cmap(i), ec=cmap(i))
         ax.text(X[i][0]-0.1, X[i][1]-0.1, r'$%s$' %i, fontsize=15, fontweight = 'bold',zorder=3)
@@ -72,11 +84,11 @@ def visualize_traj_dynamic(ws_model, X, X_list, U, goal, time = None, name=None)
     ax.set_ylabel(r'$y (m)$')
     ax.grid(False)
     if name:
-        # pyplot.savefig(name, dpi = 200)
-        # pyplot.savefig(name,bbox_inches='tight')
-        pyplot.show()
-    # pyplot.cla()
-    # pyplot.close(figure)
+        pyplot.savefig(name, dpi = 200)
+        pyplot.savefig(name,bbox_inches='tight')
+        # pyplot.show()
+    pyplot.cla()
+    pyplot.close(figure)
     return figure
 
 def get_cmap(N):

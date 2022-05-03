@@ -174,6 +174,7 @@ class RRT:
         '''
         # Create empty map
         fig, ax = plt.subplots(1)
+        plt.gca().invert_yaxis()
         img = 255 * np.dstack((self.map_array, self.map_array, self.map_array))
         ax.imshow(img)
         print("reached checkpoint 1")

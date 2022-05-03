@@ -69,10 +69,7 @@ def visualize_static_map(ws_model,name):
     # ax.axis["top"].set_visible(False)
     w = ax.get_xaxis()
     w.set_visible(False)
-    # ax.axes.get_xaxis().set_visible(False)
-    # figure.axes.get_yaxis().set_visible(False)
-    # ax.set_xlabel(r'$x (m)$')
-    # ax.set_ylabel(r'$y (m)$')
+
     ax.grid(False)
 
     pyplot.savefig(name, dpi = 200)
@@ -103,12 +100,19 @@ def global_path_generator(ws_model,map_resolution,start,goal):
     scale_y=20/len(map_array[0])
     print(map_array)
     print("x length",len(map_array))
-    print("x length",len(map_array[0]))
+    print("y length",len(map_array[0]))
+
+    #scaled_start remmember to flip x and y for rows and columns
+    scaled_start = (int(start[1]/scale_y),int(start[0]/scale_x))
+    scaled_goal = (int(goal[1]/scale_y),int(goal[0]/scale_x))
+
+    # scaled_start=(50,50)
+    # scaled_goal=(60,60)
 
     # Planning class
-    RRT_planner = RRT(map_array, start, goal)
+    RRT_planner = RRT(map_array, scaled_start, scaled_goal)
     # path = RRT_planner.RRT(n_pts=2000)
-    path,map_size = RRT_planner.RRT_star(n_pts=1000)
+    path = RRT_planner.RRT_star(n_pts=1000)
     
     return path,scale_x,scale_y
 

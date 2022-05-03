@@ -18,6 +18,17 @@ def straight_line_creator(start,end,thickness):
 
     return obstacles
 
+def start_goal_dis(current_position,goals):
+    'calculates dis betwenn cur _pos and goal INPUTS = cur pos array, goals array'
+    distances=[]
+    for i in range(len(current_position)):
+        x_start=current_position[i][0]
+        y_start=goals[i][1]
+        x_end=goals[i][0]
+        y_end=goals[i][1]
+        distance=math.sqrt(((x_end-x_start)**2)+((y_end-y_start)**2))
+        distances.append(distance)
+    return distances
 def obstacles_adder(lines,thickness):
     "adds obstacels in the form of lines. Inputs: Lines=[[startx,starty],[endx,endy]] , thickness"
     obstacles=[]
@@ -62,18 +73,36 @@ def update_dynamic_obs(old_model,dynamic_obs,time):
         dynamic_plot.append([cur_x,cur_y,obs_thickness])
         i+=1
     return old_model,dynamic_obs,dynamic_plot
+def pathway(path,horizon):
+    print(len(path))
+    for i in range(len(path)):
+        x = path[i][0]
+        y = path[i][1]
+        path[i][0] = x + 0.5
+        path[i][1] = y + 0.5
+    start   = [path[0]]
+    goal    = [path[horizon]]
+    for i in range(horizon,len(path),horizon):
+        if (i+horizon) < len(path) and i < len(path):
+            start.append(path[i])
+            goal.append(path[i+horizon])
+        else:
+            start.append(goal[-1])
+            goal.append(path[-1])
+    return start, goal
 
-# lines=[[[5,7],[5,6]]]
-# model=obstacles_adder(lines,0.5)
-# d=[   [[0,0],1,0.5,0.5],   [[0,0],4,0.5,0.5]]  
+def updated_goals(paths,iterator,robot_no):
+    "return the next step in a list of path for multiple robots INPPUTS: lists of paths for multiple robots, iterator"
+    next_goals=[]
+    a_path=paths[robot_no]
+    for i in range(len(a_path)):
+        if i==iterator:
+            next_goals.append(a_path[i])
+    return next_goals
 
-# n=len(model)
-# for t in np.arange(0,5,0.25):
 
-#     print(t)
-#     model,d,e=update_dynamic_obs(model,d,0.25)
-#     print(model)
-#     model=removing_old_dynamic_obs(model,n)
-#     print(model)
-#     print("\n")
-# print(model)
+# goals=[   [[1,1],[2,2],[3,3]],  [[1,1],[2,2],[3,3]],  [[1,1],[2,2],[3,3]] ]
+
+# a=updated_goals(goals,1)
+
+# print(a)
