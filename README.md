@@ -73,3 +73,8 @@ In hospital_1.py, refer to the MAP DEFINER code block. Here  you can manually de
 
 #### To run only the global algorithm to get a path:
 Currently we have manually input  a reduced path from the global planner into the local planner. In order to run the global planner and to integrate with local planner uncomment the “Globalpath converter” to run the global path '''
+
+## How to run the code
+
+#### STAGE 2:
+roslaunch gopher_unity_endpoint gopher_presence_server.launch
