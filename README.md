@@ -50,8 +50,10 @@ The complete integration of the global and local planner implementation has been
 <p align="center" width="100%">
     <img width="33%" src=./results/stage1.gif> 
 </p>
-
 The two robots follows the path from the global planner. When encountered by the dynamic obstacles the local planner reacts in response, thus avoiding the collision with the obstacles. 
+
+
+
 -----
 Features
 -----
