@@ -9,12 +9,13 @@ from vis import visualize_traj_dynamic
 from map_creator import obstacles_adder,removing_old_dynamic_obs,update_dynamic_obs,pathway,updated_goals,start_goal_dis
 from map_generator import global_path_generator
 #--------------------------------------------------------
-#Hospital map 1
+# MAP DEFINER Hospital map 1
+
 lines_borders=[  [[0,0],[0,20]], [[0,20],[20,20]],  [[20,20],[20,0]],  [[0,0],[20,0]] ]
 lines_room1=[  [[5,0],[5,8.75]], [[5,8.75],[13.5,8.75]], [[16.5,8.75],[20,8.75]] ]
 lines_room2=[  [[5,20],[5,11.25]],  [[5,11.25],[13.5,11.25]],  [[16.5,11.25],[20,11.25]]  ]
 all_lines=lines_borders+lines_room1+lines_room2
-
+#----------------------------------
 ws_model = dict()
 ws_model['robot_radius'] = 0.25
 ws_model['circular_obstacles']=obstacles_adder(all_lines,0.5)
@@ -34,6 +35,10 @@ goal = [[15,18],[15,1.75]]
 
 reduced_paths=[]
 
+
+# ---------------------------------------------------
+#Globalpath converter
+
 # for i in range(len(X)):
 
 #     start_i=X[i]
@@ -50,21 +55,22 @@ reduced_paths=[]
 
 #------------------------------
 
-
-#simulation setup
-# total simulation time (s)
+# simulation values
 total_time = 15
-# simulation step
 step = 0.01
-
-#------------------------------
-#simulation starts
 t = 0
+#------------------------------
 
+
+#simulation starts
 X_list = np.array(X)
 start_step=0 #step for dynamic obstacles
 i_local=0
 
+
+
+#-------------------
+# manually inputed altered path
 reduced_paths=[[[2.66,5.3],[3.75,9.33],[8.5,10.66],[14.4,12],[15,14.56],[15,18]], \
     [[2.66,14.56],[3.75,12],[8.5,10.66],[14.4,9.33],[15,5.6],[15,1.75]]]
 # print("entering while loop")
@@ -87,14 +93,15 @@ while t*step < total_time:
     goal=goal_1+goal_2
     
     static_obs_length=len(ws_model['circular_obstacles']) #no of obstacles
-    # print("goals",goal)
+
     
-    # compute desired vel to goal
+    # Desired vel to goal
     V_des = compute_V_des(X, goal, V_max)
-    # print("crossed_computed_v_des")
+
     #function to update dynamic obstacles
     ws_model['circular_obstacles'],ws_model['dynamic_obs'],ws_model['dynamic_plotting']=update_dynamic_obs(ws_model['circular_obstacles'],ws_model['dynamic_obs'],start_step)
     start_step=step
+    
     #compute the new velocities
     V = RVO_update(X, V_des, V, ws_model)
 
