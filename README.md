@@ -56,24 +56,20 @@ The two robots follows the path from the global planner. When encountered by the
 ## How to run the code
 
 #### STAGE 1
-'''
 Github reference for Stage 1:https://github.com/MengGuo/RVO_Py_MAS 
 We have referenced our work on this github link. We have added dynamic obstacles along with a combination of a local and global planner. Our work can be generalized for different maps and different global algorithms as well, just based on a black and white picture of the static map. In order to do so, modifications are required to functions we have written on map_generator.py  and map_creator.py
-'''
 
-### To run the combined local and global planner:
-'''
+
+#### To run the combined local and global planner:
 Run hospital_1.py file
 This file directly runs the combined local + global planne on test_map1
 The program saves each frame in the resulting simulation as a picture in the Data folder.
 In order to view the video you can run video creator file, which will compile all the images into a video
-'''
 
-### To make customized maps:
-'''
+
+#### To make customized maps:
 In hospital_1.py, refer to the MAP DEFINER code block. Here  you can manually define lines based on start and end points  to make a static map.
-'''
 
-### To run only the global algorithm to get a path:
-'''
+
+#### To run only the global algorithm to get a path:
 Currently we have manually input  a reduced path from the global planner into the local planner. In order to run the global planner and to integrate with local planner uncomment the “Globalpath converter” to run the global path '''
