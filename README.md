@@ -8,7 +8,7 @@ The following project is the implementation of collision avoidance in Dynamic en
 1. Stage - I
 2. Stage - II
 
-### Stage - I
+## Stage - I
 In stage -I, the python implementation of global and local planner has been done. For global planner the RRT* algorithm has been implemented. The output of the implementation are as follows:
 
 This is the implementation of RRT* for the first scenario:
@@ -45,6 +45,13 @@ In the below scenario the HRVO implementation has been shown. The issue of Recip
     <img width="33%" src=./results/HVO.gif> 
 </p>
 
+### Integration
+The complete integration of the global and local planner implementation has been show below:
+<p align="center" width="100%">
+    <img width="33%" src=./results/stage1.gif> 
+</p>
+
+The two robots follows the path from the global planner. When encountered by the dynamic obstacles the local planner reacts in response, thus avoiding the collision with the obstacles. 
 -----
 Features
 -----
