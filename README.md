@@ -1,31 +1,44 @@
-RVO_Py_MAS
-========
-
-Python Implementation of Reciprocal Velocity Obstacle (RVO) for Multi-agent Systems
-
-```
-@ARTICLE{8361450,
-  author={M. {Guo} and M. M. {Zavlanos}},
-  journal={IEEE Transactions on Robotics}, 
-  title={Multirobot Data Gathering Under Buffer Constraints and Intermittent Communication}, 
-  year={2018},
-  volume={34},
-  number={4},
-  pages={1082-1097},
-  doi={10.1109/TRO.2018.2830370}}
-```
+# Collision Avoidance in Dynamic Environment
+## RBE550 - Motion Planning Project
 
 -----
-Description
------
-This package contains a **_plug-and-play_** Python package for collision-avoidance in multi-agent system, based on reciprocal velocity obstacles ([RVO](https://www.cs.unc.edu/~geom/RVO/icra2008.pdf)) and hybrid reciprocal velocity obstacles ([HRVO](https://www.cs.unc.edu/~geom/RVO/icra2008.pdf)).
+## Description
 
-It has _minimal impact_ on your control objective and requires _minimal integration_. 
+The following project is the implementation of collision avoidance in Dynamic environment using the global-local planner integration. The project consist of two stages of implementation.
+1. Stage - I
+2. Stage - II
 
+### Stage - I
+In stage -I, the python implementation of global and local planner has been done. For global planner the RRT* algorithm has been implemented. The output of the implementation are as follows:
 
+This is the implementation of RRT* for the first scenario:
+<p align="center" width="100%">
+    <img width="33%" src=./results/RRT-star1.png> 
+</p>
 
-<p align="center">  
-  <img src="https://github.com/MengGuo/RVO_Py_MAS/blob/master/data/snapshots.png" width="800"/>
+This is the implementation of RRT* for the second scenario:
+<p align="center" width="100%">
+    <img width="33%" src=./results/RRT-star2.png> 
+</p>
+
+In case of the local planner, three variants of velocity obstacle has been implemented. They are as follows:
+1. Standard Velocity Obstacle
+2. Reciprocal Velocity Obstacle
+3. Hybrid Reciprocal Velocity Obstacle
+
+#### 1. Standard Velocity Obstacle 
+<p align="center" width="100%">
+    <img width="33%" src=./results/VO_dance.gif> 
+</p>
+
+#### 2. Reciprocal Velocity Obstacle 
+<p align="center" width="100%">
+    <img width="33%" src=./results/RVO_Dance.gif> 
+</p>
+
+#### 3. Hybrid Reciprocal Velocity Obstacle 
+<p align="center" width="100%">
+    <img width="33%" src=./results/HVO.gif> 
 </p>
 
 -----
