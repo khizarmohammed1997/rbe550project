@@ -53,46 +53,27 @@ The complete integration of the global and local planner implementation has been
 The two robots follows the path from the global planner. When encountered by the dynamic obstacles the local planner reacts in response, thus avoiding the collision with the obstacles. 
 
 
+## How to run the code
 
------
-Features
------
-* Takes a 2D workspace with _any number_ of non-overlaping circular or square obstacles
-* _Any number_ of dynamic agents with non-zero volume.
-* Allow the choice of VO, RVO, HRVO.
-* **Direct plug-and-play** and **fully integrate-able  with your control objective**, i.e., the output velocity is a minimal modification of the desired velocity.
+#### STAGE 1
+'''
+Github reference for Stage 1:https://github.com/MengGuo/RVO_Py_MAS 
+We have referenced our work on this github link. We have added dynamic obstacles along with a combination of a local and global planner. Our work can be generalized for different maps and different global algorithms as well, just based on a black and white picture of the static map. In order to do so, modifications are required to functions we have written on map_generator.py  and map_creator.py
+'''
 
-```python
-from your_module import compute_desired_V, Update_V
-from RVO import RVO_update
+### To run the combined local and global planner:
+'''
+Run hospital_1.py file
+This file directly runs the combined local + global planne on test_map1
+The program saves each frame in the resulting simulation as a picture in the Data folder.
+In order to view the video you can run video creator file, which will compile all the images into a video
+'''
 
-# your control objective here 
-V_desired = compute_desired_V(X, control_objective, V_max)
+### To make customized maps:
+'''
+In hospital_1.py, refer to the MAP DEFINER code block. Here  you can manually define lines based on start and end points  to make a static map.
+'''
 
-# plug in the RVO controller from this package
-V = RVO_update(X, V_desired, workspace_model)
-
-# let the robot move
-X = Update_X(X, V, step)
-```
-
-* Scalable and fast, see examples below. 
-* See [example.py](https://github.com/MengGuo/RVO_Py_MAS/blob/master/example.py) for test run. [[Video1]](https://vimeo.com/185405407), [[Video2]](https://vimeo.com/185408368)
-
-
-----
-References 
-----
-* Papers on [RVO](https://www.cs.unc.edu/~geom/RVO/icra2008.pdf), [HRVO](https://www.cs.unc.edu/~geom/RVO/icra2008.pdf)
-* There are [Python bindings](https://github.com/sybrenstuvel/Python-RVO2) of the C++ implementation from the algorithm developers. For my purposes, the formality is too _heavy_ to be integrated into my own project, so I have my own try.
-* This package does _not_ depend on the [Clearpath geometric package](http://pcl.intel-research.net/publications/clearpath_sca2009.pdf) to compute velocity obstacles.
-
-
-----
-Discussion
-----
-* For **very** clustered workspace with a large number of robots, you may need to limit the `maximal velocity` and use very `small step size`.
-* You may add additional constraints in `RVO_update` such as the change rate of `V`, the lower bound of `V`.
-* When applying this module to experimental robot control, you may need to set the **step size** higher due to hardware constraints.
-* In most practical experiments, this scheme should still work by limiting the _maximal velocity_.  
-
+### To run only the global algorithm to get a path:
+'''
+Currently we have manually input  a reduced path from the global planner into the local planner. In order to run the global planner and to integrate with local planner uncomment the “Globalpath converter” to run the global path '''
