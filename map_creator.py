@@ -101,8 +101,3 @@ def updated_goals(paths,iterator,robot_no):
     return next_goals
 
 
-# goals=[   [[1,1],[2,2],[3,3]],  [[1,1],[2,2],[3,3]],  [[1,1],[2,2],[3,3]] ]
-
-# a=updated_goals(goals,1)
-
-# print(a)

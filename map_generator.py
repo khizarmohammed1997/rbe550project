@@ -116,27 +116,3 @@ def global_path_generator(ws_model,map_resolution,start,goal):
     
     return path,scale_x,scale_y
 
-# ws_model = dict()
-# lines=[[[5,7],[5,3]]]
-# ws_model['circular_obstacles']=obstacles_adder(lines,0.5)
-# ws_model['dynamic_obs']=[ [[8,4],3,2.5,0.25]]
-# ws_model['circular_obstacles'],ws_model['dynamic_obs'],ws_model['dynamic_plotting']=update_dynamic_obs(ws_model['circular_obstacles'],ws_model['dynamic_obs'],0)
-
-
-
-# 'C:\Users\khiza\OneDrive\Documents\GitHub\-Reciprocal-Velocity-Obstacle--RVO-'
-# visualize_static_map(ws_model,"test_map")
-# map_array = load_map("modified_test_map.jpg", 0.3)
-# print(map_array)
-# print("x length",len(map_array))
-# print("x length",len(map_array[0]))
-
-# start = (50,50)
-# goal  = (50,200)
-
-
-
-# # Planning class
-
-# RRT_planner = RRT(map_array, start, goal)
-# RRT_planner.RRT(n_pts=1000)
