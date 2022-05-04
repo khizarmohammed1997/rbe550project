@@ -8,7 +8,7 @@ The following project is the implementation of collision avoidance in Dynamic en
 1. Stage - I
 2. Stage - II
 
-### Stage - I
+## Stage - I
 In stage -I, the python implementation of global and local planner has been done. For global planner the RRT* algorithm has been implemented. The output of the implementation are as follows:
 
 This is the implementation of RRT* for the first scenario:
@@ -26,20 +26,33 @@ In case of the local planner, three variants of velocity obstacle has been imple
 2. Reciprocal Velocity Obstacle
 3. Hybrid Reciprocal Velocity Obstacle
 
-#### 1. Standard Velocity Obstacle 
+#### 1. Standard Velocity Obstacle
+In the below scenario, a simple velocity obstacle is implemented for four robots. The circle around the robot represents the horizon for the local planner. Within this region, the local planner alters the path of the robot with respect to the trajectory of the obstacle.
+
 <p align="center" width="100%">
     <img width="33%" src=./results/VO_dance.gif> 
 </p>
 
 #### 2. Reciprocal Velocity Obstacle 
+In this implementation, the major issue of the reciprocal velcoity obstacle algorithm has been shown. The four robot converge into an oscillatory motion resulting in the "Reciprocal Dance".
 <p align="center" width="100%">
     <img width="33%" src=./results/RVO_Dance.gif> 
 </p>
 
 #### 3. Hybrid Reciprocal Velocity Obstacle 
+In the below scenario the HRVO implementation has been shown. The issue of Reciprocal dance has been resolved and it has been demosntrated in the below video.
 <p align="center" width="100%">
     <img width="33%" src=./results/HVO.gif> 
 </p>
+
+### Integration
+The complete integration of the global and local planner implementation has been show below:
+<p align="center" width="100%">
+    <img width="33%" src=./results/stage1.gif> 
+</p>
+The two robots follows the path from the global planner. When encountered by the dynamic obstacles the local planner reacts in response, thus avoiding the collision with the obstacles. 
+
+
 
 -----
 Features
