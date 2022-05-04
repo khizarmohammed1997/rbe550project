@@ -1,0 +1,8 @@
+prefix=/home/krishnasathwik09/Dynamic_obstacle_WS/devel
+
+Name: freight_state_reader
+Description: Description of freight_state_reader
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,0 +1,8 @@
+prefix=/home/krishnasathwik09/Dynamic_obstacle_WS/install
+
+Name: gopher_navigation
+Description: Description of gopher_navigation
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

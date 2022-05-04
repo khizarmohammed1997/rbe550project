@@ -1,0 +1,8 @@
+prefix=/home/krishnasathwik09/Dynamic_obstacle_WS/devel
+
+Name: gopher_unity_endpoint
+Description: Description of gopher_unity_endpoint
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

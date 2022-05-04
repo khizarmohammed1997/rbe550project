@@ -1,0 +1,8 @@
+prefix=/home/krishnasathwik09/Dynamic_obstacle_WS/devel
+
+Name: vel_obs
+Description: Description of vel_obs
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

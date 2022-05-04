@@ -1,0 +1,8 @@
+prefix=/home/krishnasathwik09/Dynamic_obstacle_WS/install
+
+Name: gopher_control
+Description: Description of gopher_control
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

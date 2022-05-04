@@ -1,0 +1,8 @@
+prefix=/home/krishnasathwik09/Dynamic_obstacle_WS/devel
+
+Name: gopher_move_it_config
+Description: Description of gopher_move_it_config
+Version: 0.0.0
+Cflags: -I/home/krishnasathwik09/Dynamic_obstacle_WS/devel/include
+Libs: -L${prefix}/lib 
+Requires: 

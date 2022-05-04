@@ -1,0 +1,2 @@
+ROS-TCP-Endpoint:ajith_local_planner:base_local_planner:freight_endpoint:freight_navigation:freight_state_reader:gopher_control:gopher_description:gopher_move_it/gen3_robotiq_2f_85_move_it_config:gopher_move_it/gopher_move_it_config:gopher_navigation:gopher_odom:gopher_unity_endpoint:kortex_description:move_base:teb_local_planner-melodic-devel:vel_obs
+-DCATKIN_DEVEL_PREFIX=/home/krishnasathwik09/Dynamic_obstacle_WS/devel -DCMAKE_INSTALL_PREFIX=/home/krishnasathwik09/Dynamic_obstacle_WS/install -G Unix Makefiles
